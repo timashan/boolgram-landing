@@ -1,103 +1,167 @@
+"use client";
+import RippleIllustration from "@/components/illustrations/ripple";
+import BentoGrid from "@/components/sections/bento-grid/2-rows-bottom";
+import FAQ from "@/components/sections/faq/static";
+import FeatureStickyLeft from "@/components/sections/feature/sticky-left";
+import FeatureStickyRight from "@/components/sections/feature/sticky-right";
+import Hero from "@/components/sections/hero/illustration";
+import Hero1 from "@/components/sections/hero/top-glow";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import Features from "./feature9";
+import { useState } from "react";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const isProd = process.env.NODE_ENV === "production";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="relative overflow-hidden">
+      <main className="">
+        <div className="flex justify-center">
+          <Image
+            src="logo.svg"
+            alt="Mockup"
+            width={600}
+            height={100}
+            className="invert absolute top-0 z-50 opacity-20 px-12 pointer-events-none"
+          />
+          <Image
+            src="logo.svg"
+            alt="Mockup"
+            width={600}
+            height={100}
+            className="invert absolute top-0 z-50 px-12 scale-[5] pointer-events-none opacity-0 md:opacity-2"
+          />
         </div>
+        <Hero1
+          // badge={
+          //   <Badge variant="outline" className="animate-appear p-3">
+          //     <span className="text-muted-foreground text-sm font-bold">
+          //       Project
+          //     </span>
+          //     <Image
+          //       src="/logo.png"
+          //       alt="Mockup"
+          //       width={100}
+          //       height={100}
+          //       className="invert"
+          //     />
+          //   </Badge>
+          // }
+          title=""
+          description="Social media sites collect oceans of data but keep the insights locked away. What if that power came back to you? Boolean gives you the analytics behind opinions — so you can make data-driven decisions."
+          // form={
+          //   <>
+          //     <iframe
+          //       src="https://docs.google.com/forms/d/e/1FAIpQLSd8l7vmRHwnQFYqCZOfQcVRt7CFQolN6blNNTVYRLI_QXYLCg/viewform?embedded=true"
+          //       width="640"
+          //       height="418"
+          //       frameborder="0"
+          //       marginheight="0"
+          //       marginwidth="0"
+          //     >
+          //       Loading…
+          //     </iframe>
+          //   </>
+          // }
+          form={
+            <>
+              {!isSubmitted && (
+                <form
+                  className="flex w-full max-w-[420px] gap-2"
+                  method="POST"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    fetch(
+                      "https://script.google.com/macros/s/AKfycbzTw6-_2LfDfl5VpKYzV1h2cnkV8jpW2XP36TifI_c5gvD8YoWhbqXPy0ppjGcXVB6S/exec",
+                      {
+                        method: "POST",
+                        body: new FormData(e.currentTarget),
+                      }
+                    );
+                    e.currentTarget.reset();
+                    setIsSubmitted(true);
+                  }}
+                >
+                  <Input
+                    type="email"
+                    placeholder="Email address"
+                    className="border-border/10 bg-foreground/10 grow"
+                    name="email"
+                  />
+                  <MagneticButton
+                    className="shiny-button"
+                    variant="default"
+                    size="lg"
+                  >
+                    Join Waitlist
+                  </MagneticButton>
+                </form>
+              )}
+              {isSubmitted ? (
+                <p className="text-muted-foreground text-xs">
+                  We&apos;ll notify you when we launch.
+                </p>
+              ) : (
+                <p className="text-muted-foreground text-xs">
+                  Your email will solely be used for the waitlist.
+                </p>
+              )}
+            </>
+          }
+          mockup={
+            <div>
+              <Image
+                src="hero.png"
+                alt="Mockup"
+                width={1248}
+                height={765}
+                className="min-w-[30rem]"
+              />
+              <div className="absolute bottom-[-8rem] right-0 sm:max-w-[55%] sm:bottom-[-5rem] text-left font-bold animate-float">
+                <div className="absolute z-50 flex gap-2 items-end p-5">
+                  <span className="text-2xl md:text-4xl">Belief</span>
+                  <span className="text-gray-500">Map</span>
+                </div>
+                <div className=" border border-accent bg-accent/10 backdrop-blur-md rounded-lg p-2 max-w-[90%]">
+                  <Image
+                    src="/beliefmap.png"
+                    alt="Mockup"
+                    width={300}
+                    height={500}
+                    className="object-cover w-full"
+                  />
+                  <p className="font-thin text-gray-300 text-sm">
+                    A belief map where each node is a comment, showing clusters
+                    of like-minded opinions and connections between similar
+                    beliefs.
+                  </p>
+                </div>
+              </div>
+            </div>
+          }
+        />
+        {/* <FeatureStickyLeft
+          // imageDark={"/hero.png"}
+          visual={<RippleIllustration />}
+          title="Let Me Explain..."
+          description="Today’s social platforms are designed for sharing, posting, and reacting — but they rarely reveal what people truly believe. You scroll through endless posts, yet you have no way of knowing how many silently agree with a bold opinion, where genuine consensus ends and division begins, or how much insight gets lost beneath the noise of virality and engagement tactics. It’s time to look deeper and uncover the real pulse of collective belief."
+        />
+        <FeatureStickyRight
+          imageDark={"/hero.png"}
+          title="Belief Mapping"
+          description=" Collective Belief Mapping is a new way to visualize and understand the beliefs of groups, communities, and societies. It helps you see where people agree, disagree, and how opinions evolve over time."
+        /> */}
+        {/* <BentoGrid /> */}
+        <Features />
+        <FAQ />
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <footer className=""></footer>
     </div>
   );
 }
