@@ -29,6 +29,25 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Validate deploy variables
+        run: |
+          missing=0
+          for name in AWS_DEFAULT_REGION AWS_ROLE_TO_ASSUME LANDING_PAGE_S3_BUCKET LANDING_PAGE_CLOUDFRONT_DISTRIBUTION_ID APP_NAME DOMAIN
+          do
+            if [ -z "${!name}" ]; then
+              echo "::error title=Missing GitHub Actions variable::$name is not set for this workflow"
+              missing=1
+            fi
+          done
+          exit "$missing"
+        env:
+          AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
+          AWS_ROLE_TO_ASSUME: ${{ vars.AWS_ROLE_TO_ASSUME }}
+          LANDING_PAGE_S3_BUCKET: ${{ vars.LANDING_PAGE_S3_BUCKET }}
+          LANDING_PAGE_CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.LANDING_PAGE_CLOUDFRONT_DISTRIBUTION_ID }}
+          APP_NAME: ${{ vars.APP_NAME }}
+          DOMAIN: ${{ vars.DOMAIN }}
+
       - name: Build Next.js app
         run: pnpm build
         env:
