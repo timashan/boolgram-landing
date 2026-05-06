@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 
+import { APP_NAME } from "@/lib/constants";
 import { Section } from "../../ui/section";
 
 interface FAQItemProps {
@@ -18,25 +19,25 @@ export default function FAQ({
   title = "Questions && Answers",
   items = [
     {
-      question: "What is Boolean?",
+      question: `What is ${APP_NAME}?`,
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-            Boolean is a digital hive mind that connects you with like-minded
-            thinkers. Opinions are more than posts — they’re data points
+            {APP_NAME} is a digital hive mind that connects you with like-minded
+            thinkers. Opinions are more than posts. They’re data points
             revealing collective beliefs.
           </p>
         </>
       ),
     },
     {
-      question: "Why use Boolean instead of traditional social media?",
+      question: `Why use ${APP_NAME} instead of traditional social media?`,
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
             Traditional social networks often fail at their core purpose:
             connecting people meaningfully. Most platforms chase likes,
-            followers, and endless scrolling. Boolean does one thing
+            followers, and endless scrolling. {APP_NAME} does one thing
             differently: it connects people on an opinion level, showing what
             people actually think rather than how loudly they can shout.
           </p>
@@ -44,15 +45,15 @@ export default function FAQ({
       ),
     },
     {
-      question: "How is Boolean different from polls or surveys?",
+      question: `How is ${APP_NAME} different from polls or surveys?`,
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-            Surveys ask pre-set questions. Boolean flips this: anyone can post
+            Surveys ask pre-set questions. {APP_NAME} flips this: anyone can post
             an opinion, and others respond organically. Responses are aggregated
             into belief maps and insights, revealing how different groups think
-            — for example, US citizens vs Indian citizens or people in 2025 vs
-            people in 2030.
+            across groups, such as US citizens vs Indian citizens or people in
+            2025 vs people in 2030.
           </p>
         </>
       ),
@@ -62,7 +63,7 @@ export default function FAQ({
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-            Yes. Boolean provides analytics that show how your views align with
+            Yes. {APP_NAME} provides analytics that show how your views align with
             different communities, regions, or the overall public mood. You can
             see exactly where you fit in the bigger picture.
           </p>
@@ -70,11 +71,11 @@ export default function FAQ({
       ),
     },
     {
-      question: "Does Boolean recommend people to follow?",
+      question: `Does ${APP_NAME} recommend people to follow?`,
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-            Boolean recommends people based on shared beliefs and perspectives,
+            {APP_NAME} recommends people based on shared beliefs and perspectives,
             helping you connect with the thinkers who matter to you.
           </p>
         </>
@@ -85,22 +86,22 @@ export default function FAQ({
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-            Every opinion becomes part of a living dataset. Boolean tracks
+            Every opinion becomes part of a living dataset. {APP_NAME} tracks
             shifts in sentiment, regional differences, and alignment across
-            groups. Your posts aren’t just content — they contribute to
+            groups. Your posts aren’t just content. They contribute to
             understanding collective thought patterns.
           </p>
         </>
       ),
     },
     {
-      question: "Who is Boolean for?",
+      question: `Who is ${APP_NAME} for?`,
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-            Boolean is for anyone who wants to express, explore, and understand
-            opinions — from casual users debating ideas to researchers studying
-            social trends. If you believe opinions shape the world, Boolean lets
+            {APP_NAME} is for anyone who wants to express, explore, and understand
+            opinions, from casual users debating ideas to researchers studying
+            social trends. If you believe opinions shape the world, {APP_NAME} lets
             you see it happen in real time.
           </p>
         </>

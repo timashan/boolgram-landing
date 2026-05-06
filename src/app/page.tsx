@@ -10,6 +10,7 @@ import Hero1 from "@/components/sections/hero/top-glow";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { APP_NAME } from "@/lib/constants";
 import Image from "next/image";
 import Features from "./feature9";
 import { useState } from "react";
@@ -25,14 +26,14 @@ export default function Home() {
         <div className="flex justify-center">
           <Image
             src="logo.svg"
-            alt="Mockup"
+            alt={APP_NAME}
             width={600}
             height={100}
             className="invert absolute top-0 z-50 opacity-20 px-12 pointer-events-none"
           />
           <Image
             src="logo.svg"
-            alt="Mockup"
+            alt={APP_NAME}
             width={600}
             height={100}
             className="invert absolute top-0 z-50 px-12 scale-[5] pointer-events-none opacity-0 md:opacity-2"
@@ -54,7 +55,7 @@ export default function Home() {
           //   </Badge>
           // }
           title=""
-          description="Social media sites collect oceans of data but keep the insights locked away. What if that power came back to you? Boolean gives you the analytics behind opinions — so you can make data-driven decisions."
+          description={`Social media sites collect oceans of data but keep the insights locked away. What if that power came back to you? ${APP_NAME} gives you the analytics behind opinions, so you can make data-driven decisions.`}
           // form={
           //   <>
           //     <iframe
@@ -118,7 +119,7 @@ export default function Home() {
             <div>
               <Image
                 src="hero.png"
-                alt="Mockup"
+                alt={`${APP_NAME} app mockup`}
                 width={1248}
                 height={765}
                 className="min-w-[30rem]"
@@ -150,7 +151,7 @@ export default function Home() {
           // imageDark={"/hero.png"}
           visual={<RippleIllustration />}
           title="Let Me Explain..."
-          description="Today’s social platforms are designed for sharing, posting, and reacting — but they rarely reveal what people truly believe. You scroll through endless posts, yet you have no way of knowing how many silently agree with a bold opinion, where genuine consensus ends and division begins, or how much insight gets lost beneath the noise of virality and engagement tactics. It’s time to look deeper and uncover the real pulse of collective belief."
+          description="Today’s social platforms are designed for sharing, posting, and reacting, but they rarely reveal what people truly believe. You scroll through endless posts, yet you have no way of knowing how many silently agree with a bold opinion, where genuine consensus ends and division begins, or how much insight gets lost beneath the noise of virality and engagement tactics. It’s time to look deeper and uncover the real pulse of collective belief."
         />
         <FeatureStickyRight
           imageDark={"/hero.png"}

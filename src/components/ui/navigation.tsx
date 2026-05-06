@@ -87,7 +87,7 @@ export default function Navigation({
       title: "Tabs",
       href: "/docs/primitives/tabs",
       description:
-        "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+        "A set of layered sections of content, known as tab panels, that are displayed one at a time.",
     },
     {
       title: "Tooltip",

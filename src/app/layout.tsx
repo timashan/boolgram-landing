@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { APP_NAME } from "@/lib/constants";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Boolean",
-  description: "Boolean is a microblogging platform built for opinions.",
+  title: APP_NAME,
+  description: `${APP_NAME} is a microblogging platform built for opinions.`,
 };
 
 export default function RootLayout({
